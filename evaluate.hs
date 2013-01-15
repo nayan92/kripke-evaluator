@@ -20,3 +20,14 @@ evaluate ( _, _, val ) w ( Var v )
   where
     matches ( v', _ )
       = v' == v
+evaluate m w ( Not f )
+  = not ( evaluate m w f )
+evaluate m w ( And f f' )
+  = ( evaluate m w f ) && ( evaluate m w f' )
+evaluate m@( n, r, _ ) w ( Box f )
+  = and ( map evaluate' n )
+  where
+    evaluate' w'
+      = ( not ( elem ( w, w' ) r ) ) || ( evaluate m w' f )
+evaluate m w ( Diamond f )
+  = evaluate m w ( Not ( Box ( Not f ) ) )
