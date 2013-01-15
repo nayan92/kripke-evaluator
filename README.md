@@ -21,7 +21,8 @@ and so contains 3 parameters:
 - w is a node in the world W
 - f is a formula defined using the following Haskell data structure:
 
-    type Atom = String
+    type Atom = String  
+    
     data Formula = Var Atom | TrueT | FalseT | Not Formula | And Formula Formula | Box Formula | Diamond Formula | Implies Formula Formula
 
 Here are some examples to get you started:
