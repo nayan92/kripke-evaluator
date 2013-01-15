@@ -19,7 +19,7 @@ evaluate _ _ TrueT
   = True
 -- Case when (M, w) |= p
 evaluate ( _, _, val ) w ( Var v )
-  = elem w ( snd ( unzip ( filter matches val ) ) )
+  = elem w $ snd $ unzip $ filter matches val
   where
     matches ( v', _ )
       = v' == v
@@ -34,13 +34,13 @@ evaluate m@( n, r, _ ) w ( Box f )
   = and ( map evaluate' n )
   where
     evaluate' w'
-      = ( not ( elem ( w, w' ) r ) ) || ( evaluate m w' f )
+      = ( not $ elem ( w, w' ) r ) || ( evaluate m w' f )
 -- Case when (M, w) |= diamond f
 evaluate m w ( Diamond f )
   = evaluate m w ( Not ( Box ( Not f ) ) )
 -- Case when (M, w) |= f -> f'
 evaluate m w ( Implies f f' )
-  = ( not ( evaluate m w f ) ) || ( evaluate m w f' )
+  = ( not $ evaluate m w f ) || ( evaluate m w f' )
 -- Case else
 evaluate _ _ _
   = False
