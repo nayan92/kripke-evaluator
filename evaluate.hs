@@ -4,7 +4,8 @@
 
 type Atom = String
 
-data Formula = Var Atom | TrueT | FalseT | Not Formula | And Formula Formula | Box Formula | Diamond Formula | Implies Formula Formula
+data Formula = Var Atom | TrueT | FalseT | Not Formula | And Formula Formula
+               | Box Formula | Diamond Formula | Implies Formula Formula
 
 type Node = String
 type World = [ Node ]
