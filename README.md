@@ -7,8 +7,10 @@ GHCi is required to use the tool. Setup is as follows:
   ghci evaluate.hs
 
 To check that a satisfaction of the form:
+
     (M, w) |= f
 is valid, you run the function 'evaluate' in the following fashion:
+
     evaluate M w f
 
 - M is the Model (using abusive notation as explained in lecture notes)
@@ -23,6 +25,7 @@ and so contains 3 parameters:
     data Formula = Var Atom | TrueT | FalseT | Not Formula | And Formula Formula | Box Formula | Diamond Formula | Implies Formula Formula
 
 Here are some examples to get you started:
+
     > evaluate (["w1", "w2"], [("w1", "w2")], [("p", "w1")]) "w1" (Var "p")
     > True
 
