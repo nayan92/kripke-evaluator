@@ -19,8 +19,8 @@ and so contains 3 parameters:
   - Relation R : This is the relation between nodes in the world (subset of (W x W)). It is a list of tuples of the form [(w1, w2), (w2, w3)...]
   - Valuation pi : This is the valuation for the atoms. It is a list of tuples of the form [(p, w1), (p, w2), (q, w2)...]
 - w is a node in the world W
-- f is a formula defined using the following Haskell data structure:  
-  
+- f is a formula defined using the following Haskell data structure:
+
     type Atom = String
     data Formula = Var Atom | TrueT | FalseT | Not Formula | And Formula Formula | Box Formula | Diamond Formula | Implies Formula Formula
 
