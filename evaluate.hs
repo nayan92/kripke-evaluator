@@ -1,7 +1,6 @@
-import Data.Maybe
-
 type Atom = String
-data Formula = Var Atom | TrueT | FalseT | Not Formula | And Formula Formula | Box Formula | Diamond Formula
+
+data Formula = Var Atom | TrueT | FalseT | Not Formula | And Formula Formula | Box Formula | Diamond Formula | Implies Formula Formula
   deriving (Eq, Ord, Show)
 
 type Node = String
@@ -31,3 +30,7 @@ evaluate m@( n, r, _ ) w ( Box f )
       = ( not ( elem ( w, w' ) r ) ) || ( evaluate m w' f )
 evaluate m w ( Diamond f )
   = evaluate m w ( Not ( Box ( Not f ) ) )
+evaluate m w ( Implies f f' )
+  = ( not ( evaluate m w f ) ) || ( evaluate m w f' )
+evaluate _ _ _
+  = False
