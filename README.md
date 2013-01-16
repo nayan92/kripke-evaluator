@@ -23,7 +23,7 @@ and so contains 3 parameters:
 
     type Atom = String  
     
-    data Formula = Var Atom | TrueT | FalseT | Not Formula | And Formula Formula | Box Formula | Diamond Formula | Implies Formula Formula
+    data Formula = Var Atom | TrueT | FalseT | Not Formula | And Formula Formula | Or Formula Formula | Box Formula | Diamond Formula | Implies Formula Formula
 
 Here are some examples to get you started:
 

@@ -5,7 +5,8 @@
 type Atom = String
 
 data Formula = Var Atom | TrueT | FalseT | Not Formula | And Formula Formula
-               | Box Formula | Diamond Formula | Implies Formula Formula
+               | Or Formula Formula | Box Formula | Diamond Formula
+               | Implies Formula Formula
 
 type Node = String
 type World = [ Node ]
@@ -30,6 +31,9 @@ evaluate m w ( Not f )
 -- Case when (M, w) |= f and f'
 evaluate m w ( And f f' )
   = ( evaluate m w f ) && ( evaluate m w f' )
+-- Case when (M, w) |= f or f'
+evaluate m w ( Or f f' )
+  = ( evaluate m w f ) || ( evaluate m w f' )
 -- Case when (M, w) |= box f
 evaluate m@( n, r, _ ) w ( Box f )
   = and ( map evaluate' n )
